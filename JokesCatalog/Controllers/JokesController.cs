@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using JokesCatalog.Data;
 using JokesCatalog.Models;
@@ -34,12 +32,12 @@ namespace JokesCatalog.Controllers
                 return NotFound();
             }
 
-            var joke = await _context.Joke
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var joke = await _context.Joke.FirstOrDefaultAsync(m => m.Id == id);
             if (joke == null)
             {
                 return NotFound();
             }
+            joke.DateCreated = joke.DateCreated.Date;
 
             return View(joke);
         }

@@ -16,6 +16,7 @@ namespace JokesCatalog.Models
         public string Question { get; set; }
         public string Answer { get; set; }
         [Display(Name ="Date Created")]
+        [DataType(DataType.Date)]
         public DateTime DateCreated { get; set; }
     }
 }
